@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="1.7"
+	client="site"
+	metod="upgrade">
+	<name>do Yandex Metrika</name>
+	<author>Sergey Donin</author>
+	<creationDate>July 2011</creationDate>
+	<copyright>Copyright (C) 2011 Sergey Donin. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>dostrog@gmail.com</authorEmail>
+	<authorUrl>http://dostrog.livejournal.com</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_DOYANDEXMETRIKA_DESC</description>
+	<files>
+		<filename module="mod_doyandexmetrika">mod_doyandexmetrika.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>images</folder>
+		<folder>tmpl</folder>
+	</files>	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.mod_doyandexmetrika.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_doyandexmetrika.sys.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.mod_doyandexmetrika.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.mod_doyandexmetrika.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="do_counter_id"
+					type="text"
+					default=""
+					size="20"
+					label="MOD_DOYANDEXMETRIKA_ID"
+					description="MOD_DOYANDEXMETRIKA_ID_DESC" />
+				<field name="do_counter_code"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_CODE"
+					description="MOD_DOYANDEXMETRIKA_CODE_DESC">
+					<option
+						value="1">MOD_DOYANDEXMETRIKA_ASYNC</option>
+					<option
+						value="0">MOD_DOYANDEXMETRIKA_STANDARD</option>
+				</field>
+				<field
+					name="do_informer"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_INFORMER"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_DESC">
+					<option
+						value="1">JYES</option>
+					<option
+						value="0">JNO</option>
+				</field>
+				<field
+					name="do_clickmap"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_CLICKMAP"
+					description="MOD_DOYANDEXMETRIKA_CLICKMAP_DESC">
+					<option
+						value="1">JYES</option>
+					<option
+						value="0">JNO</option>
+				</field>
+				<field
+					name="do_tracklinks"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_TRACK_LINKS"
+					description="MOD_DOYANDEXMETRIKA_TRACK_LINKS_DESC">
+					<option
+						value="1">JYES</option>
+					<option
+						value="0">JNO</option>
+				</field>
+				<field
+					name="do_trackbounce"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_TRACK_BOUNCE"
+					description="MOD_DOYANDEXMETRIKA_TRACK_BOUNCE_DESC">
+					<option
+						value="1">JYES</option>
+					<option
+						value="o">JNO</option>
+				</field>
+				<field
+					name="do_informerstyle"
+					type="radio"
+					default="3"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_STYLE"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_STYLE_DESC">
+					<option
+						value="3"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/88x31.png" alt="88x31" /><br />]]></option>
+					<option
+						value="2"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/80x31.png" alt="80x31" /><br />]]></option>
+					<option
+						value="1"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/80x15.png" alt="80x15" /><br />]]></option>
+				</field>
+				<field
+					name="do_informerinfo"
+					type="list"
+					default="pageviews"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_INFO"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_INFO_DESC">
+					<option
+						value="pageviews">MOD_DOYANDEXMETRIKA_VIEWS</option>
+					<option
+						value="visits">MOD_DOYANDEXMETRIKA_VISITS</option>
+					<option
+						value="uniques">MOD_DOYANDEXMETRIKA_USERS</option>
+				</field>
+				<field
+					name="do_informer_color1"
+					type="text"
+					default="205173FF"
+					size="20"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_COLOR1"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_COLOR1_DESC" />
+				<field
+					name="do_informer_color2"
+					type="text"
+					default="003153FF"
+					size="20"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_COLOR2"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_COLOR2_DESC" />
+				<field
+					name="do_gradient"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_GRADIENT"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_GRADIENT_DESC">
+					<option
+						value="1">JYES</option>
+					<option
+						value="0">JNO</option>
+				</field>
+				<field
+					name="do_textcolor"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_TEXTCOLOR"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_TEXTCOLOR_DESC">
+					<option
+						value="1">MOD_DOYANDEXMETRIKA_INFORMER_WHITE</option>
+					<option
+						value="0">MOD_DOYANDEXMETRIKA_INFORMER_BLACK</option>
+				</field>
+				<field
+					name="do_arrowcolor"
+					type="radio"
+					default="0"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_ARROWTCOLOR"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_ARROWCOLOR_DESC">
+					<option
+						value="0"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/gray_arrow.png" alt="Gray"/><br/> ]]></option>
+					<option
+						value="1"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/violet_arrow.png" alt="Violet"/><br/>	]]></option>
+				</field>
+				<field
+					name="do_visitsparams"
+					type="textarea"
+					default=""
+					rows="10"
+					cols="50"
+					label="MOD_DOYANDEXMETRIKA_VISITSPARAMS"
+					description="MOD_DOYANDEXMETRIKA_VISITSPARAMS_DESC" />
+				<field
+					name="spacer"
+					type="spacer"
+					hr="true" />
+				<field
+					name="do_noindex"
+					type="radio"
+					default="0"
+					label="MOD_DOYANDEXMETRIKA_NOINDEX"
+					description="MOD_DOYANDEXMETRIKA_NOINDEX_DESC">
+					<option
+						value="0">JNO</option>
+					<option
+						value="1">JYES</option>
+				</field>
+				<field
+					name="do_noindexpages"
+					type="text"
+					default=""
+					size="55"
+					label="MOD_DOYANDEXMETRIKA_NOINDEXPAGES"
+					description="MOD_DOYANDEXMETRIKA_NOINDEXPAGES_DESC" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					default=""
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

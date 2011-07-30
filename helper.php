@@ -1,0 +1,160 @@
+<?php
+/**
+ * @version	$Id$
+ * @package	Joomla.Site
+ * @subpackage  mod_doyandexmetrika
+ * @author	Sergey Donin
+ * @author mail	dostrog@gmail.com
+ * @copyright	Copyright (C) 2011 Open Source Matters. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+// no direct access
+defined( '_JEXEC' ) or die( 'Restricted access' );
+
+class ModDoyandexmetrikaHelper
+{
+   /**
+    * @param    array
+    * @return   string
+    */
+   public function getCode($params)
+   {
+      $inject = "";
+      
+      $do_counter_id = $params->get('do_counter_id');
+            
+      // Nothing to do without Yandex.Metrika counter ID
+      if (!isset($do_counter_id)) {
+         return;
+      }
+      
+      $do_counter_id = trim($do_counter_id);
+      
+      $do_counter_code = $params->get('do_counter_code');
+      $do_informer = $params->get('do_informer');
+      $do_clickmap = $params->get('do_clickmap');
+      $do_tracklinks = $params->get('do_tracklinks');
+      $do_trackbounce = $params->get('do_trackbounce');
+      $do_visitsparams = $params->get('do_visitsparams');
+      $do_noindex = $params->get('do_noindex');
+
+      if ($do_informer==1) {
+
+         // Get only informers params
+         $do_informerstyle = $params->get('do_informerstyle');
+         $do_informerinfo = $params->get('do_informerinfo');
+         $do_informer_color1 = strtoupper(trim($params->get('do_informer_color1')));
+         $do_informer_color2 = strtoupper(trim($params->get('do_informer_color2')));
+         $do_gradient = $params->get('do_gradient');
+         $do_textcolor = $params->get('do_textcolor');
+         $do_arrowcolor = $params->get('do_arrowcolor');
+         
+         $inject  = "<!-- Yandex.Metrika informer -->\n";
+         $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"";
+         $inject .= "target=\"_blank\" rel=\"nofollow\"><img src=\"//bs.yandex.ru/informer/$do_counter_id";
+                  
+         if ($do_gradient==0) {
+            $do_informer_color1 = $do_informer_color2;
+         }
+         
+         $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."_".$do_informer_color2."_".$do_textcolor."_".$do_informerinfo."\"";
+         $inject .= "style=\"width:";
+         switch ($do_informerstyle) {
+            case 3: // 88x31
+               $inject .= "88px; height:31";
+               $titlea = "(просмотры, визиты и уникальные посетители)";
+               break;
+            case 2: //80x31
+               $inject .= "80px; height:31";
+               break;
+            case 1: //80x15
+               $inject .= "80px; height:15";
+               break;
+         }
+         
+         // Select data for 80x31 and 80x15 style
+         if ($do_informerstyle<3) {
+            switch ($do_informerinfo) {
+               case "pageviews":
+                  $titlea = "(просмотры)";
+                  break;
+               case "visits":
+                  $titlea = "(визиты)";
+                  break;
+               case "uniques";
+                  $titlea = "(уникальные посетители)";
+                  break;
+            }
+         }
+         
+         $inject .= "px; border:0;\" alt=\"Яндекс.Метрика\" title=\"Яндекс.Метрика: данные за сегодня ".$titlea."\"  /></a>\n";
+         $inject .= "<!-- /Yandex.Metrika informer -->\n";
+      }
+      
+      $inject .= "<!-- Yandex.Metrika counter -->\n";
+      
+      if (!empty($do_visitsparams)) {
+         $inject .= "<script type=\"text/javascript\">\nvar yaParams = {/*Здесь параметры визита*/\n";
+         $inject .= trim($do_visitsparams);
+         $inject .= "\n};</script>\n";
+      }
+      
+      // Async
+      if ($do_counter_code == 1) { 
+         $inject .= "<div style=\"display:none;\"><script type=\"text/javascript\">
+                     (function(w, c) {
+                     (w[c] = w[c] || []).push(function() {\ntry {\n w.";
+      } else {
+         $inject .= "<script src=\"//mc.yandex.ru/metrika/watch.js\" type=\"text/javascript\"></script>\n";
+         $inject .= "<div style=\"display:none;\"><script type=\"text/javascript\">\ntry { var ";
+      }
+
+      $inject .= "yaCounter$do_counter_id = new Ya.Metrika({id:$do_counter_id";
+      
+      if (($do_clickmap == 1) && ($do_tracklinks == 1) && ($do_trackbounce == 1)) {
+         $inject .= ", enableAll: true";
+      } else {
+         if ($do_clickmap == 1) {
+            $inject .= ", clickmap:true";
+         }
+         if ($do_tracklinks == 1) {
+            $inject .= ", trackLinks:true";
+         }
+         if ($do_trackbounce == 1) {
+            $inject .= ", accurateTrackBounce:true";
+         }
+      }
+      
+      $noscriptind = ""; // var for noindex param in noscript part
+      
+      if ($do_noindex == 1) {         
+         $u =& JFactory::getURI();
+         $path_site = $u->toString();
+
+         $do_noindexpages = trim($params->get('do_noindexpages'));         
+                  
+         if (($do_noindexpages != "") && (preg_match($do_noindexpages, $path_site))) {
+            $inject .= ", ut: 'noindex'";
+            $noscriptind = "?ut=noindex";
+         }
+      }
+      
+      $inject .= "});\n}\ncatch(e) { }\n";
+      
+      // Async
+      if ($do_counter_code == 1) { 
+         $inject .= "});\n })(window, \"yandex_metrika_callbacks\");\n</script></div>\n";
+         $inject .= "<script src=\"//mc.yandex.ru/metrika/watch.js\" type=\"text/javascript\" defer=\"defer\"></script>\n";
+      } else {
+         $inject .= "</script></div>";
+      }
+      
+      $inject .= "<noscript><div><img src=\"//mc.yandex.ru/watch/$do_counter_id$noscriptind\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>";
+      $inject .= "<!-- /Yandex.Metrika counter -->\n";
+            
+      return $inject;
+   
+   } //end getCode
+
+}
