@@ -1,2 +1,6 @@
 *.zip
 *.psd
+*.diff
+.DS_Store
+*~
+*.patch
