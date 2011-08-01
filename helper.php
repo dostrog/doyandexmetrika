@@ -51,14 +51,14 @@ class ModDoyandexmetrikaHelper
          $do_arrowcolor = $params->get('do_arrowcolor');
          
          $inject  = "<!-- Yandex.Metrika informer -->\n";
-         $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"";
+         $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"\n";
          $inject .= "target=\"_blank\" rel=\"nofollow\"><img src=\"//bs.yandex.ru/informer/$do_counter_id";
                   
          if ($do_gradient==0) {
             $do_informer_color1 = $do_informer_color2;
          }
          
-         $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."_".$do_informer_color2."_".$do_textcolor."_".$do_informerinfo."\"";
+         $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."_".$do_informer_color2."_".$do_textcolor."_".$do_informerinfo."\"\n";
          $inject .= "style=\"width:";
          switch ($do_informerstyle) {
             case 3: // 88x31
@@ -88,8 +88,8 @@ class ModDoyandexmetrikaHelper
             }
          }
          
-         $inject .= "px; border:0;\" alt=\"Яндекс.Метрика\" title=\"Яндекс.Метрика: данные за сегодня ".$titlea."\"  /></a>\n";
-         $inject .= "<!-- /Yandex.Metrika informer -->\n";
+         $inject .= "px; border:0;\" alt=\"Яндекс.Метрика\" title=\"Яндекс.Метрика: данные за сегодня ".$titlea."\" /></a>\n";
+         $inject .= "<!-- /Yandex.Metrika informer -->\n\n";
       }
       
       $inject .= "<!-- Yandex.Metrika counter -->\n";
@@ -102,9 +102,9 @@ class ModDoyandexmetrikaHelper
       
       // Async
       if ($do_counter_code == 1) { 
-         $inject .= "<div style=\"display:none;\"><script type=\"text/javascript\">
-                     (function(w, c) {
-                     (w[c] = w[c] || []).push(function() {\ntry {\n w.";
+         $inject .= "<div style=\"display:none;\"><script type=\"text/javascript\">\n";
+         $inject .= "(function(w, c) {\n";
+         $inject .= "(w[c] = w[c] || []).push(function() {\ntry {\n w.";
       } else {
          $inject .= "<script src=\"//mc.yandex.ru/metrika/watch.js\" type=\"text/javascript\"></script>\n";
          $inject .= "<div style=\"display:none;\"><script type=\"text/javascript\">\ntry { var ";
@@ -150,9 +150,9 @@ class ModDoyandexmetrikaHelper
          $inject .= "</script></div>";
       }
       
-      $inject .= "<noscript><div><img src=\"//mc.yandex.ru/watch/$do_counter_id$noscriptind\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>";
+      $inject .= "<noscript><div><img src=\"//mc.yandex.ru/watch/$do_counter_id$noscriptind\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n";
       $inject .= "<!-- /Yandex.Metrika counter -->\n";
-            
+      
       return $inject;
    
    } //end getCode
