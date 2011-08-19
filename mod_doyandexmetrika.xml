@@ -93,7 +93,7 @@
 				<field
 					name="do_trackhash"
 					type="radio"
-					default="1"
+					default="0"
 					label="MOD_DOYANDEXMETRIKA_TRACK_HASH"
 					description="MOD_DOYANDEXMETRIKA_TRACK_HASH_DESC">
 					<option
