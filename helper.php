@@ -1,6 +1,6 @@
 <?php
 /**
- * @version	$Id$
+ * @version	1.1.0
  * @package	Joomla.Site
  * @subpackage  mod_doyandexmetrika
  * @author	Sergey Donin
@@ -49,6 +49,8 @@ class ModDoyandexmetrikaHelper
          $do_gradient = $params->get('do_gradient');
          $do_textcolor = $params->get('do_textcolor');
          $do_arrowcolor = $params->get('do_arrowcolor');
+         $do_informertype = $params->get('do_informertype');
+         $do_trackhash = $params->get('do_trackhash');
          
          $inject  = "<!-- Yandex.Metrika informer -->\n";
          $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"\n";
@@ -88,8 +90,13 @@ class ModDoyandexmetrikaHelper
             }
          }
          
-         $inject .= "px; border:0;\" alt=\"Яндекс.Метрика\" title=\"Яндекс.Метрика: данные за сегодня ".$titlea."\" /></a>\n";
-         $inject .= "<!-- /Yandex.Metrika informer -->\n\n";
+         $inject .= "px; border:0;\" alt=\"Яндекс.Метрика\" title=\"Яндекс.Метрика: данные за сегодня ".$titlea."\" ";
+         
+         if ($do_informertype == 1) {
+            $inject .= "onclick=\"try{Ya.Metrika.informer({i:this,id:$do_counter_id,type:0,lang:'ru'});return false}catch(e){}\"";
+         }
+         
+         $inject .= "/></a>\n<!-- /Yandex.Metrika informer -->\n\n";
       }
       
       $inject .= "<!-- Yandex.Metrika counter -->\n";
@@ -124,6 +131,10 @@ class ModDoyandexmetrikaHelper
          if ($do_trackbounce == 1) {
             $inject .= ", accurateTrackBounce:true";
          }
+      }
+      
+      if ($do_trackhash == 1) {
+         $inject .= ", trackHash:true";
       }
       
       $noscriptind = ""; // var for noindex param in noscript part

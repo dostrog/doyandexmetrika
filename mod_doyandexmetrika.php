@@ -1,6 +1,6 @@
 <?php
 /**
- * @version	$Id$
+ * @version	1.1.0
  * @package	Joomla.Site
  * @subpackage  mod_doyandexmetrika
  * @author	Sergey Donin

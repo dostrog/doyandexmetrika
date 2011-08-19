@@ -6,12 +6,12 @@
 	metod="upgrade">
 	<name>do Yandex Metrika</name>
 	<author>Sergey Donin</author>
-	<creationDate>July 2011</creationDate>
+	<creationDate>August 2011</creationDate>
 	<copyright>Copyright (C) 2011 Sergey Donin. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>dostrog@gmail.com</authorEmail>
-	<authorUrl>http://dostrog.livejournal.com</authorUrl>
-	<version>1.0.0</version>
+	<authorUrl>http://dostrog.ru</authorUrl>
+	<version>1.1.0</version>
 	<description>MOD_DOYANDEXMETRIKA_DESC</description>
 	<files>
 		<filename module="mod_doyandexmetrika">mod_doyandexmetrika.php</filename>
@@ -88,7 +88,18 @@
 					<option
 						value="1">JYES</option>
 					<option
-						value="o">JNO</option>
+						value="0">JNO</option>
+				</field>
+				<field
+					name="do_trackhash"
+					type="radio"
+					default="1"
+					label="MOD_DOYANDEXMETRIKA_TRACK_HASH"
+					description="MOD_DOYANDEXMETRIKA_TRACK_HASH_DESC">
+					<option
+						value="1">JYES</option>
+					<option
+						value="0">JNO</option>
 				</field>
 				<field
 					name="do_informerstyle"
@@ -162,6 +173,17 @@
 						value="0"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/gray_arrow.png" alt="Gray"/><br/> ]]></option>
 					<option
 						value="1"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/violet_arrow.png" alt="Violet"/><br/>	]]></option>
+				</field>
+				<field
+					name="do_informertype"
+					type="radio"
+					default="0"
+					label="MOD_DOYANDEXMETRIKA_INFORMER_TYPE"
+					description="MOD_DOYANDEXMETRIKA_INFORMER_TYPE_DESC">
+					<option
+						value="0">MOD_DOYANDEXMETRIKA_INFORMERTYPE_SIMPLE</option>
+					<option
+						value="1">MOD_DOYANDEXMETRIKA_INFORMERTYPE_ADVANCED</option>
 				</field>
 				<field
 					name="do_visitsparams"
