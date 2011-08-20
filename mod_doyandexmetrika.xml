@@ -3,7 +3,7 @@
 	type="module"
 	version="1.7"
 	client="site"
-	metod="upgrade">
+	method="upgrade">
 	<name>do Yandex Metrika</name>
 	<author>Sergey Donin</author>
 	<creationDate>August 2011</creationDate>
