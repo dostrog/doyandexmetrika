@@ -27,7 +27,7 @@ BASE_FILES = mod_doyandexmetrika.php\
 	language/en-GB/*\
 	language/ru-RU/*
 
-YM = ${DIST_DIR}/mod_doyandexmetrika.zip
+YM = ${DIST_DIR}/mod_doyandexmetrika-j1.5.zip
 
 all: clean module
 
