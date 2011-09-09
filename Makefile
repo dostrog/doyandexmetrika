@@ -22,6 +22,7 @@ BASE_FILES = mod_doyandexmetrika.php\
 	images/88x31.png\
 	images/gray_arrow.png\
 	images/violet_arrow.png\
+	images/index.html\
 	tmpl/default.php\
 	tmpl/index.html\
 	language/en-GB/*\
