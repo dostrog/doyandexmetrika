@@ -25,6 +25,7 @@ BASE_FILES = mod_doyandexmetrika.php\
 	images/index.html\
 	tmpl/default.php\
 	tmpl/index.html\
+	language/index.html\
 	language/en-GB/*\
 	language/ru-RU/*
 
