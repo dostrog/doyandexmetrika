@@ -1,10 +1,10 @@
 <?php
 /**
- * @version	1.1.0
+ * @version	1.1.1
  * @package	Joomla.Site
  * @subpackage  mod_doyandexmetrika
  * @author	Sergey Donin
- * @author mail	dostrog@gmail.com
+ * @author mail	sergey.donin@gmail.com
  * @copyright	Copyright (C) 2011 Open Source Matters. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -149,6 +149,10 @@ class ModDoyandexmetrikaHelper
             $inject .= ", ut: 'noindex'";
             $noscriptind = "?ut=noindex";
          }
+      }
+
+      if ($do_webvisor == 1) { // v1.1.1 webvisor
+         $inject .= ", webvisor:true";
       }
       
       $inject .= "});\n}\ncatch(e) { }\n";

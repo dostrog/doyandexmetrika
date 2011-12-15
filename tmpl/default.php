@@ -4,7 +4,7 @@
  * @package	Joomla.Site
  * @subpackage  mod_doyandexmetrika
  * @author	Sergey Donin
- * @author mail	dostrog@gmail.com
+ * @author mail	sergey.donin@gmail.com
  * @copyright	Copyright (C) 2011 Open Source Matters. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
