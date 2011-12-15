@@ -4,12 +4,12 @@
 	version="1.5.0">
 	<name>do Yandex Metrika</name>
 	<author>Sergey Donin</author>
-	<creationDate>August 2011</creationDate>
+	<creationDate>December 2011</creationDate>
 	<copyright>Copyright (C) 2011 Sergey Donin. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>dostrog@gmail.com</authorEmail>
+	<authorEmail>sergey.donin@gmail.com</authorEmail>
 	<authorUrl>http://dostrog.ru</authorUrl>
-	<version>1.1.0</version>
+	<version>1.1.1</version>
 	<downloadUrl>http://dostrog.ru/doyandexmetrika#download/</downloadUrl>
 	<description>MOD_DOYANDEXMETRIKA_DESC</description>
 	<files>
@@ -42,6 +42,17 @@
 				value="1">MOD_DOYANDEXMETRIKA_ASYNC</option>
 			<option
 				value="0">MOD_DOYANDEXMETRIKA_STANDARD</option>
+		</param>
+		<param
+			name="do_webvisor"
+			type="radio"
+			default="1"
+			label="MOD_DOYANDEXMETRIKA_WEBVISOR"
+			description="MOD_DOYANDEXMETRIKA_WEBVISOR_DESC">
+			<option
+				value="1">JYES</option>
+			<option
+				value="0">JNO</option>
 		</param>
 		<param
 			name="do_informer"
