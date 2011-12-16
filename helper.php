@@ -38,6 +38,7 @@ class ModDoyandexmetrikaHelper
       $do_trackbounce = $params->get('do_trackbounce');
       $do_visitsparams = $params->get('do_visitsparams');
       $do_noindex = $params->get('do_noindex');
+      $do_webvisor = $params->get('do_webvisor');
 
       if ($do_informer==1) {
 
