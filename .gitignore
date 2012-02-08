@@ -2,7 +2,9 @@
 *.psd
 *.diff
 .DS_Store
+.komodotools
 *~
 *.patch
 dist
+build
 *.komodoproject
