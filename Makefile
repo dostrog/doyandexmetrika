@@ -10,6 +10,8 @@ DIST_DIR = ${PREFIX}/dist
 ZIP ?= `which zip`
 #do not compress files
 ZIPNONE = .png:.jpg
+#do not include files
+ZIPEXCL = \*.DS_Store \*.git \*.gitignore \*project
 
 BASE_FILES = mod_doyandexmetrika.php\
 	mod_doyandexmetrika.xml\
@@ -25,9 +27,7 @@ BASE_FILES = mod_doyandexmetrika.php\
 	images/index.html\
 	tmpl/default.php\
 	tmpl/index.html\
-	language/index.html\
-	language/en-GB/*\
-	language/ru-RU/*
+	language/
 
 YM = ${DIST_DIR}/mod_doyandexmetrika.zip
 
@@ -41,7 +41,7 @@ ${DIST_DIR}:
 
 ${YM}: ${DIST_DIR}
 	@@echo "Building" ${YM}
-	@@${ZIP} -n ${ZIPNONE} ${YM} ${BASE_FILES}
+	@@${ZIP} -rn ${ZIPNONE} ${YM} ${BASE_FILES} -x ${ZIPEXCL}
 
 clean:
 	@@echo "Removing distribution directory:" ${DIST_DIR}
