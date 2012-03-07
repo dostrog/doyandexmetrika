@@ -1,18 +1,16 @@
 <?php
 /**
- * @version	1.1.1
  * @package	Joomla.Site
  * @subpackage  mod_doyandexmetrika
- * @author	Sergey Donin
- * @author mail	sergey.donin@gmail.com	
- * @copyright	Copyright (C) 2011 Open Source Matters. All rights reserved.
+ *
+ * @copyright	Copyright (C) 2011-2012 Open Source Matters. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // Include the syndicate functions only once
-require_once(dirname(__FILE__).DS.'helper.php');
+require_once(dirname(__FILE__).'/helper.php');
 
 // get a code-injection
 $inject = ModDoyandexmetrikaHelper::getCode($params);

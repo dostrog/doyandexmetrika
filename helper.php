@@ -1,12 +1,9 @@
 <?php
 /**
- * @version	1.1.1
- * @package	Joomla.Site
- * @subpackage  mod_doyandexmetrika
- * @author	Sergey Donin
- * @author mail	sergey.donin@gmail.com
- * @copyright	Copyright (C) 2011 Open Source Matters. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @package	   Joomla.Site
+ * @subpackage mod_doyandexmetrika
+ * @copyright  Copyright (C) 2011-2012 Open Source Matters. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // no direct access
@@ -21,7 +18,6 @@ class ModDoyandexmetrikaHelper
    public function getCode($params)
    {
       $inject = "";
-      
       $do_counter_id = $params->get('do_counter_id');
             
       // Nothing to do without Yandex.Metrika counter ID
@@ -170,7 +166,5 @@ class ModDoyandexmetrikaHelper
       $inject .= "<!-- /Yandex.Metrika counter -->\n";
       
       return $inject;
-   
    } //end getCode
-
 }

@@ -1,13 +1,18 @@
-# @version	$Id$
 # @package	Joomla.Site
 # @subpackage  mod_doyandexmetrika
 # @author	Sergey Donin
-# @author mail	dostrog@gmail.com
+# @author mail	sergey.donin@gmail.com
 
+TYPE = 'mod_'
+# NAME must be equal to filename of main XML file!
+NAME = 'doyandexmetrika'
 PREFIX = .
-DIST_DIR = ${PREFIX}/dist
+DIST_DIR = ${PREFIX}/build
 
-ZIP ?= `which zip`
+SED ?= $(shell which sed)
+ZIP ?= $(shell which zip)
+VER ?= $(shell ${SED} -ne 's/\(.*\)<version>\(.*\)<\/version>/\2/p' ${TYPE}${NAME}.xml)
+
 #do not compress files
 ZIPNONE = .png:.jpg
 #do not include files
@@ -19,29 +24,24 @@ BASE_FILES = mod_doyandexmetrika.php\
 	LICENSE.TXT\
 	index.html\
 	helper.php\
-	images/80x15.png\
-	images/80x31.png\
-	images/88x31.png\
-	images/gray_arrow.png\
-	images/violet_arrow.png\
-	images/index.html\
-	tmpl/default.php\
-	tmpl/index.html\
+	script.php\
+	media/\
+	tmpl/\
 	language/
 
-YM = ${DIST_DIR}/mod_doyandexmetrika.zip
+DIST = ${DIST_DIR}/${TYPE}${NAME}-v${VER}.zip
 
 all: clean module
 
-module: ${YM}
-	@@echo "mod_doyandexmetrika build complete."
+module: ${DIST}
+	@@echo ${DIST} 'build complete.'
 
 ${DIST_DIR}:
 	@@mkdir -p ${DIST_DIR}
 
-${YM}: ${DIST_DIR}
-	@@echo "Building" ${YM}
-	@@${ZIP} -rn ${ZIPNONE} ${YM} ${BASE_FILES} -x ${ZIPEXCL}
+${DIST}: ${DIST_DIR}
+	@@echo "Building" ${DIST}
+	@@${ZIP} -rn ${ZIPNONE} ${DIST} ${BASE_FILES} -x ${ZIPEXCL}
 
 clean:
 	@@echo "Removing distribution directory:" ${DIST_DIR}

@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
 	type="module"
-	version="1.7"
+	version="2.5"
 	client="site"
 	method="upgrade">
+
 	<name>do Yandex Metrika</name>
 	<author>Sergey Donin</author>
-	<creationDate>December 2011</creationDate>
-	<copyright>Copyright (C) 2011 Sergey Donin. All rights reserved.</copyright>
+	<creationDate>March 2012</creationDate>
+	<copyright>Copyright (C) 2011-2012 Sergey Donin. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>sergey.donin@gmail.com</authorEmail>
 	<authorUrl>http://dostrog.ru</authorUrl>
-	<version>1.1.1</version>
+	<version>2.5.1</version>
 	<description>MOD_DOYANDEXMETRIKA_DESC</description>
+	
+	<!-- Runs on install/uninstall/update; New in 2.5 -->
+	<scriptfile>script.php</scriptfile>
+	
 	<files>
 		<filename module="mod_doyandexmetrika">mod_doyandexmetrika.php</filename>
 		<filename>index.html</filename>
 		<filename>helper.php</filename>
-		<folder>images</folder>
 		<folder>tmpl</folder>
-	</files>	
-	<languages folder="language">
+		<folder>media</folder>
+	</files>
+ 	<media destination="mod_doyandexmetrika" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+	</media>	
+ 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.mod_doyandexmetrika.ini</language>
 		<language tag="en-GB">en-GB/en-GB.mod_doyandexmetrika.sys.ini</language>
 		<language tag="ru-RU">ru-RU/ru-RU.mod_doyandexmetrika.ini</language>
 		<language tag="ru-RU">ru-RU/ru-RU.mod_doyandexmetrika.sys.ini</language>
 	</languages>
+	<!-- UPDATESERVER DEFINITION -->
+	<updateservers>
+		<!-- Note: No spaces or linebreaks allowed between the server tags -->
+		<server type="collection" priority="1" name="dostrog's Joomla CMS extensions Update Site">http://dostrog.ru/update/list.xml</server>
+	</updateservers>
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
@@ -119,11 +133,11 @@
 					label="MOD_DOYANDEXMETRIKA_INFORMER_STYLE"
 					description="MOD_DOYANDEXMETRIKA_INFORMER_STYLE_DESC">
 					<option
-						value="3"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/88x31.png" alt="88x31" /><br />]]></option>
+						value="3"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/88x31.png" alt="88x31" /><br />]]></option>
 					<option
-						value="2"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/80x31.png" alt="80x31" /><br />]]></option>
+						value="2"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x31.png" alt="80x31" /><br />]]></option>
 					<option
-						value="1"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/80x15.png" alt="80x15" /><br />]]></option>
+						value="1"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x15.png" alt="80x15" /><br />]]></option>
 				</field>
 				<field
 					name="do_informerinfo"
@@ -181,9 +195,9 @@
 					label="MOD_DOYANDEXMETRIKA_INFORMER_ARROWTCOLOR"
 					description="MOD_DOYANDEXMETRIKA_INFORMER_ARROWCOLOR_DESC">
 					<option
-						value="0"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/gray_arrow.png" alt="Gray"/><br/> ]]></option>
+						value="0"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/gray_arrow.png" alt="Gray"/><br/> ]]></option>
 					<option
-						value="1"><![CDATA[ <img src="/modules/mod_doyandexmetrika/images/violet_arrow.png" alt="Violet"/><br/>	]]></option>
+						value="1"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/violet_arrow.png" alt="Violet"/><br/> ]]></option>
 				</field>
 				<field
 					name="do_informertype"
@@ -250,7 +264,6 @@
 					<option
 						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
 				</field>
-
 				<field
 					name="cache_time"
 					type="text"
