@@ -12,7 +12,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>sergey.donin@gmail.com</authorEmail>
 	<authorUrl>http://dostrog.ru</authorUrl>
-	<version>2.5.1</version>
+	<version>2.5.2</version>
 	<description>MOD_DOYANDEXMETRIKA_DESC</description>
 	
 	<!-- Runs on install/uninstall/update; New in 2.5 -->

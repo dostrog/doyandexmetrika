@@ -35,6 +35,7 @@ class ModDoyandexmetrikaHelper
       $do_visitsparams = $params->get('do_visitsparams');
       $do_noindex = $params->get('do_noindex');
       $do_webvisor = $params->get('do_webvisor');
+      $do_trackhash = $params->get('do_trackhash');
 
       if ($do_informer==1) {
 
@@ -47,7 +48,6 @@ class ModDoyandexmetrikaHelper
          $do_textcolor = $params->get('do_textcolor');
          $do_arrowcolor = $params->get('do_arrowcolor');
          $do_informertype = $params->get('do_informertype');
-         $do_trackhash = $params->get('do_trackhash');
          
          $inject  = "<!-- Yandex.Metrika informer -->\n";
          $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"\n";
