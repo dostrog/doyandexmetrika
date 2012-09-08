@@ -19,14 +19,14 @@ class ModDoyandexmetrikaHelper
    {
       $inject = "";
       $do_counter_id = $params->get('do_counter_id');
-            
+
       // Nothing to do without Yandex.Metrika counter ID
       if (!isset($do_counter_id)) {
          return;
       }
-      
+
       $do_counter_id = trim($do_counter_id);
-      
+
       $do_counter_code = $params->get('do_counter_code');
       $do_informer = $params->get('do_informer');
       $do_clickmap = $params->get('do_clickmap');
@@ -48,15 +48,15 @@ class ModDoyandexmetrikaHelper
          $do_textcolor = $params->get('do_textcolor');
          $do_arrowcolor = $params->get('do_arrowcolor');
          $do_informertype = $params->get('do_informertype');
-         
+
          $inject  = "<!-- Yandex.Metrika informer -->\n";
          $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"\n";
          $inject .= "target=\"_blank\" rel=\"nofollow\"><img src=\"//bs.yandex.ru/informer/$do_counter_id";
-                  
+
          if ($do_gradient==0) {
             $do_informer_color1 = $do_informer_color2;
          }
-         
+
          $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."_".$do_informer_color2."_".$do_textcolor."_".$do_informerinfo."\"\n";
          $inject .= "style=\"width:";
          switch ($do_informerstyle) {
@@ -71,7 +71,7 @@ class ModDoyandexmetrikaHelper
                $inject .= "80px; height:15";
                break;
          }
-         
+
          // Select data for 80x31 and 80x15 style
          if ($do_informerstyle<3) {
             switch ($do_informerinfo) {
@@ -86,36 +86,36 @@ class ModDoyandexmetrikaHelper
                   break;
             }
          }
-         
+
          $inject .= "px; border:0;\" alt=\"Яндекс.Метрика\" title=\"Яндекс.Метрика: данные за сегодня ".$titlea."\" ";
-         
+
          if ($do_informertype == 1) {
             $inject .= "onclick=\"try{Ya.Metrika.informer({i:this,id:$do_counter_id,type:0,lang:'ru'});return false}catch(e){}\"";
          }
-         
+
          $inject .= "/></a>\n<!-- /Yandex.Metrika informer -->\n\n";
       }
-      
+
       $inject .= "<!-- Yandex.Metrika counter -->\n";
-      
+
       if (!empty($do_visitsparams)) {
          $inject .= "<script type=\"text/javascript\">\nvar yaParams = {/*Здесь параметры визита*/\n";
          $inject .= trim($do_visitsparams);
          $inject .= "\n};</script>\n";
       }
-      
+
       // Async
-      if ($do_counter_code == 1) { 
-         $inject .= "<div style=\"display:none;\"><script type=\"text/javascript\">\n";
-         $inject .= "(function(w, c) {\n";
+      if ($do_counter_code == 1) {
+         $inject .= "<script type=\"text/javascript\">\n";
+         $inject .= "(function(d, w, c) {\n";
          $inject .= "(w[c] = w[c] || []).push(function() {\ntry {\n w.";
       } else {
          $inject .= "<script src=\"//mc.yandex.ru/metrika/watch.js\" type=\"text/javascript\"></script>\n";
-         $inject .= "<div style=\"display:none;\"><script type=\"text/javascript\">\ntry { var ";
+         $inject .= "<script type=\"text/javascript\">\ntry { var ";
       }
 
       $inject .= "yaCounter$do_counter_id = new Ya.Metrika({id:$do_counter_id";
-      
+
       if (($do_clickmap == 1) && ($do_tracklinks == 1) && ($do_trackbounce == 1)) {
          $inject .= ", enableAll: true";
       } else {
@@ -129,19 +129,19 @@ class ModDoyandexmetrikaHelper
             $inject .= ", accurateTrackBounce:true";
          }
       }
-      
+
       if ($do_trackhash == 1) {
          $inject .= ", trackHash:true";
       }
-      
+
       $noscriptind = ""; // var for noindex param in noscript part
-      
-      if ($do_noindex == 1) {         
+
+      if ($do_noindex == 1) {
          $u =& JFactory::getURI();
          $path_site = $u->toString();
 
-         $do_noindexpages = trim($params->get('do_noindexpages'));         
-                  
+         $do_noindexpages = trim($params->get('do_noindexpages'));
+
          if (($do_noindexpages != "") && (preg_match($do_noindexpages, $path_site))) {
             $inject .= ", ut: 'noindex'";
             $noscriptind = "?ut=noindex";
@@ -151,20 +151,32 @@ class ModDoyandexmetrikaHelper
       if ($do_webvisor == 1) { // v1.1.1 webvisor
          $inject .= ", webvisor:true";
       }
-      
-      $inject .= "});\n}\ncatch(e) { }\n";
-      
-      // Async
-      if ($do_counter_code == 1) { 
-         $inject .= "});\n })(window, \"yandex_metrika_callbacks\");\n</script></div>\n";
-         $inject .= "<script src=\"//mc.yandex.ru/metrika/watch.js\" type=\"text/javascript\" defer=\"defer\"></script>\n";
-      } else {
-         $inject .= "</script></div>";
+
+      if (!empty($do_visitsparams)) {
+         $inject .= ",params:window.yaParams||{ }";
       }
-      
+
+      $inject .= "});\n}\ncatch(e) { }\n";
+
+      // Async
+      if ($do_counter_code == 1) {
+         $inject .= "});";
+         $inject .= "var n = d.getElementsByTagName(\"script\")[0],\n";
+         $inject .= "s = d.createElement(\"script\"),\n";
+         $inject .= "f = function () { n.parentNode.insertBefore(s, n); };\n";
+         $inject .= "s.type = \"text/javascript\";\n";
+         $inject .= "s.async = true;\n";
+         $inject .= "s.src = (d.location.protocol == \"https:\" ? \"https:\" : \"http:\") + \"//mc.yandex.ru/metrika/watch.js\";\n";
+         $inject .= "if (w.opera == \"[object Opera]\") {\n";
+         $inject .= "  d.addEventListener(\"DOMContentLoaded\", f);\n";
+         $inject .= "} else { f(); }';\n";
+         $inject .= "})(document, window, \"yandex_metrika_callbacks\");\n";
+      };
+
+      $inject .= "</script>\n";
       $inject .= "<noscript><div><img src=\"//mc.yandex.ru/watch/$do_counter_id$noscriptind\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n";
       $inject .= "<!-- /Yandex.Metrika counter -->\n";
-      
+
       return $inject;
    } //end getCode
 }
