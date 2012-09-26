@@ -1,0 +1,210 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"strto",
+				"strtolower"
+			],
+			[
+				"ver",
+				"version"
+			],
+			[
+				"ve",
+				"version"
+			],
+			[
+				"vers",
+				"version_compare"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"qu",
+				"query"
+			],
+			[
+				"getI",
+				"getId"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"ext",
+				"extension_id"
+			],
+			[
+				"bod",
+				"BODY"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"command_palette":
+	{
+		"height": 292.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			]
+		],
+		"width": 588.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/sergey/Documents/projects/doyandexmetrika/mod_doyandexmetrika.xml",
+		"/Users/sergey/Documents/projects/doyandexmetrika/helper.php",
+		"/Users/sergey/Documents/projects/doyandexmetrika/update/list.xml",
+		"/Users/sergey/Documents/projects/doyandexmetrika/mod_doyandexmetrika.php",
+		"/Users/sergey/Documents/projects/doyandexmetrika/update/mod_doyandexmetrika-update.xml",
+		"/Users/sergey/Documents/projects/doyandexmetrika/Makefile",
+		"/Users/sergey/Documents/projects/doyandexmetrika/script.php",
+		"/Users/sergey/Documents/projects/doyandexmetrika/index.html",
+		"/Users/sergey/Library/Application Support/Sublime Text 2/Packages/Alignment/Default (OSX).sublime-keymap",
+		"/Users/sergey/Documents/projects/doyandexmetrika/language/ru-RU/ru-RU.mod_doyandexmetrika.ini",
+		"/Users/sergey/Documents/projects/doyandexmetrika/language/ru-RU/ru-RU.mod_doyandexmetrika.sys.ini",
+		"/Users/sergey/Documents/projects/doyandexmetrika/language/en-GB/en-GB.mod_doyandexmetrika.sys.ini",
+		"/Users/sergey/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/Base File.sublime-settings",
+		"/Users/sergey/Documents/projects/doyandexmetrika/language/en-GB/en-GB.mod_doyandexmetrika.ini",
+		"/Users/sergey/Documents/projects/doyandexmetrika/doyandexmetrika.xml",
+		"/Users/sergey/Documents/projects/doyandexmetrika/doyandexmetrika.xml.old.xml",
+		"/Users/sergey/Documents/projects/doyandexmetrika/doyandexmetrika.php",
+		"/Users/sergey/Documents/projects/doyandexmetrika/media/images/index.html",
+		"/Users/sergey/Documents/projects/doyandexmetrika/tmpl/default.php",
+		"/Users/sergey/Documents/projects/webinar-AT/Makefile",
+		"/Users/sergey/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/sergey/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/sergey/Library/Application Support/Sublime Text 2/Packages/User/PHP.sublime-settings",
+		"/Users/sergey/Documents/projects/doyandexmetrika/doyandexmetrika.sublime-project",
+		"/Users/sergey/Documents/projects/doyandexmetrika/test.php",
+		"/Users/sergey/Documents/projects/doyandexmetrika/test.html"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 98.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
