@@ -107,7 +107,7 @@ class ModDoyandexmetrikaHelper
       // Async
       if ($do_counter_code == 1) {
          $inject .= "<script type=\"text/javascript\">\n";
-         $inject .= "(function(d, w, c) {\n";
+         $inject .= "(function (d, w, c) {\n";
          $inject .= "(w[c] = w[c] || []).push(function() {\ntry {\n w.";
       } else {
          $inject .= "<script src=\"//mc.yandex.ru/metrika/watch.js\" type=\"text/javascript\"></script>\n";
@@ -169,7 +169,7 @@ class ModDoyandexmetrikaHelper
          $inject .= "s.src = (d.location.protocol == \"https:\" ? \"https:\" : \"http:\") + \"//mc.yandex.ru/metrika/watch.js\";\n";
          $inject .= "if (w.opera == \"[object Opera]\") {\n";
          $inject .= "  d.addEventListener(\"DOMContentLoaded\", f);\n";
-         $inject .= "} else { f(); }';\n";
+         $inject .= "} else { f(); }\n";
          $inject .= "})(document, window, \"yandex_metrika_callbacks\");\n";
       };
 
