@@ -4,12 +4,12 @@
 	version="1.5.0">
 	<name>do Yandex Metrika</name>
 	<author>Sergey Donin</author>
-	<creationDate>December 2011</creationDate>
+	<creationDate>Sep 2012</creationDate>
 	<copyright>Copyright (C) 2011 Sergey Donin. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>sergey.donin@gmail.com</authorEmail>
 	<authorUrl>http://dostrog.ru</authorUrl>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 	<downloadUrl>http://dostrog.ru/doyandexmetrika#download/</downloadUrl>
 	<description>MOD_DOYANDEXMETRIKA_DESC</description>
 	<files>
@@ -18,7 +18,7 @@
 		<filename>helper.php</filename>
 		<folder>images</folder>
 		<folder>tmpl</folder>
-	</files>	
+	</files>
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.mod_doyandexmetrika.ini</language>
 		<language tag="en-GB">en-GB/en-GB.mod_doyandexmetrika.sys.ini</language>
