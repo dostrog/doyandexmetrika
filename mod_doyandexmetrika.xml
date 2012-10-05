@@ -7,12 +7,12 @@
 
 	<name>do Yandex Metrika</name>
 	<author>Sergey Donin</author>
-	<creationDate>Sep 2012</creationDate>
+	<creationDate>Oct 2012</creationDate>
 	<copyright>Copyright (C) 2011-2012 Sergey Donin. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>sergey.donin@gmail.com</authorEmail>
 	<authorUrl>http://dostrog.ru</authorUrl>
-	<version>2.5.3</version>
+	<version>2.5.4</version>
 	<description>MOD_DOYANDEXMETRIKA_DESC</description>
 
 	<!-- Runs on install/uninstall/update; New in 2.5 -->
@@ -209,6 +209,17 @@
 						value="0">MOD_DOYANDEXMETRIKA_INFORMERTYPE_SIMPLE</option>
 					<option
 						value="1">MOD_DOYANDEXMETRIKA_INFORMERTYPE_ADVANCED</option>
+				</field>
+				<field
+					name="do_userparams"
+					type="radio"
+					default="0"
+					label="MOD_DOYANDEXMETRIKA_USERPARAMS"
+					description="MOD_DOYANDEXMETRIKA_USERPARAMS_DESC">
+					<option
+						value="1">JYES</option>
+					<option
+						value="0">JNO</option>
 				</field>
 				<field
 					name="do_visitsparams"
