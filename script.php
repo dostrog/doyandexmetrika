@@ -34,43 +34,43 @@ class mod_doyandexmetrikaInstallerScript
 	 *
 	 * @return void
 	 */
-	function install($parent) 
+	function install($parent)
 	{
 		// $parent is the class calling this method
 	}
- 
+
 	/**
 	 * method to uninstall the module
 	 *
 	 * @return void
 	 */
-	function uninstall($parent) 
+	function uninstall($parent)
 	{
 		// $parent is the class calling this method
 	}
- 
+
 	/**
 	 * method to update the component
 	 *
 	 * @return void
 	 */
-	function update($parent) 
+	function update($parent)
 	{
 		// $parent is the class calling this method
 	}
- 
+
 	/**
 	 * method to run before an install/update/uninstall method
 	 *
 	 * @return void
 	 */
-	function preflight($type, $parent) 
+	function preflight($type, $parent)
 	{
 		// $parent is the class calling this method
 		// $type is the type of change (install, update or discover_install)
 
 		// Массив несовместимых с веткой 2.x.x версий
-        $oldVers = array( '1.0.1','1.1.0','1.1.1' );
+        $oldVers = array( '1.0.1','1.1.0','1.1.1','1.1.2' );
 
 		// Поиск версии установленной в настоящее время
 		$extension = JTable::getInstance('extension');
@@ -85,13 +85,13 @@ class mod_doyandexmetrikaInstallerScript
         }
 
 	}
- 
+
 	/**
 	 * method to run after an install/update/uninstall method
 	 *
 	 * @return void
 	 */
-	function postflight($type, $parent) 
+	function postflight($type, $parent)
 	{
 		// $parent is the class calling this method
 		// $type is the type of change (install, update or discover_install)
