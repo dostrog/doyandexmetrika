@@ -51,15 +51,20 @@ class ModDoyandexmetrikaHelper
 				 $do_informertype = $params->get('do_informertype');
 
 				 $inject  = "<!-- Yandex.Metrika informer -->\n";
-				 $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"\n";
-				 $inject .= "target=\"_blank\" rel=\"nofollow\"><img src=\"//bs.yandex.ru/informer/$do_counter_id";
+
+
+
+
+				 $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=".$do_counter_id;
+$inject .= '&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/'.$do_counter_id;
 
 				 if ($do_gradient==0) {
 						$do_informer_color1 = $do_informer_color2;
 				 }
 
-				 $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."_".$do_informer_color2."_".$do_textcolor."_".$do_informerinfo."\"\n";
-				 $inject .= "style=\"width:";
+				 $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."_".$do_informer_color2."_".$do_textcolor."_".$do_informerinfo."\"";
+				 $inject .= "\nstyle=\"width:";
 				 switch ($do_informerstyle) {
 						case 3: // 88x31
 							 $inject .= "88px; height:31";
@@ -94,7 +99,7 @@ class ModDoyandexmetrikaHelper
 						$inject .= "onclick=\"try{Ya.Metrika.informer({i:this,id:$do_counter_id,type:0,lang:'ru'});return false}catch(e){}\"";
 				 }
 
-				 $inject .= "/></a>\n<!-- /Yandex.Metrika informer -->\n\n";
+				 $inject .= " /></a>\n<!-- /Yandex.Metrika informer -->\n\n";
 			}
 
 			$inject .= "<!-- Yandex.Metrika counter -->\n";
@@ -131,22 +136,26 @@ class ModDoyandexmetrikaHelper
 
 			$inject .= "yaCounter$do_counter_id = new Ya.Metrika({id:$do_counter_id";
 
-			if (($do_clickmap == 1) && ($do_tracklinks == 1) && ($do_trackbounce == 1)) {
-				 $inject .= ", enableAll: true";
-			} else {
-				 if ($do_clickmap == 1) {
-						$inject .= ", clickmap:true";
-				 }
-				 if ($do_tracklinks == 1) {
-						$inject .= ", trackLinks:true";
-				 }
-				 if ($do_trackbounce == 1) {
-						$inject .= ", accurateTrackBounce:true";
-				 }
+			if ($do_webvisor == 1) { // v1.1.1 webvisor
+				 $inject .= ",\nwebvisor:true";
 			}
 
+			// if (($do_clickmap == 1) && ($do_tracklinks == 1) && ($do_trackbounce == 1)) {
+			// 	 $inject .= ",\nenableAll: true";
+			// } else {
+				 if ($do_clickmap == 1) {
+						$inject .= ",\nclickmap:true";
+				 }
+				 if ($do_tracklinks == 1) {
+						$inject .= ",\ntrackLinks:true";
+				 }
+				 if ($do_trackbounce == 1) {
+						$inject .= ",\naccurateTrackBounce:true";
+				 }
+			// }
+
 			if ($do_trackhash == 1) {
-				 $inject .= ", trackHash:true";
+				 $inject .= ",\ntrackHash:true";
 			}
 
 			$noscriptind = ""; // var for noindex param in noscript part
@@ -157,33 +166,32 @@ class ModDoyandexmetrikaHelper
 
 				 $do_noindexpages = trim($params->get('do_noindexpages'));
 
-				 if (($do_noindexpages != "") && (preg_match($do_noindexpages, $path_site))) {
-						$inject .= ", ut: 'noindex'";
+				 if (!empty($do_noindexpages) && (preg_match($do_noindexpages, $path_site))) {
+						$inject .= ",\nut:\"noindex\"";
 						$noscriptind = "?ut=noindex";
 				 }
+			} else {
+						$inject .= ",\nut:\"noindex\"";
+						$noscriptind = "?ut=noindex";
 			}
 
-			if ($do_webvisor == 1) { // v1.1.1 webvisor
-				 $inject .= ", webvisor:true";
-			}
-
-			if (!empty($do_visitsparams)  || !empty($userparams)) {
+			if (!empty($do_visitsparams) || !empty($userparams)) {
 				 $inject .= ",params:window.yaParams||{ }";
 			}
 
-			$inject .= "});\n}\ncatch(e) { }\n";
+			$inject .= "});\n} catch(e) { }\n";
 
 			// Async
 			if ($do_counter_code == 1) {
-				 $inject .= "});";
+				 $inject .= "});\n\n";
 				 $inject .= "var n = d.getElementsByTagName(\"script\")[0],\n";
 				 $inject .= "s = d.createElement(\"script\"),\n";
 				 $inject .= "f = function () { n.parentNode.insertBefore(s, n); };\n";
 				 $inject .= "s.type = \"text/javascript\";\n";
 				 $inject .= "s.async = true;\n";
-				 $inject .= "s.src = (d.location.protocol == \"https:\" ? \"https:\" : \"http:\") + \"//mc.yandex.ru/metrika/watch.js\";\n";
+				 $inject .= "s.src = (d.location.protocol == \"https:\" ? \"https:\" : \"http:\") + \"//mc.yandex.ru/metrika/watch.js\";\n\n";
 				 $inject .= "if (w.opera == \"[object Opera]\") {\n";
-				 $inject .= "  d.addEventListener(\"DOMContentLoaded\", f);\n";
+				 $inject .= "  d.addEventListener(\"DOMContentLoaded\", f, false);\n";
 				 $inject .= "} else { f(); }\n";
 				 $inject .= "})(document, window, \"yandex_metrika_callbacks\");\n";
 			};
