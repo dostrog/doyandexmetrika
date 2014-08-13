@@ -16,17 +16,15 @@ VER ?= $(shell ${SED} -ne 's/\(.*\)<version>\(.*\)<\/version>/\2/p' ${TYPE}${NAM
 #do not compress files
 ZIPNONE = .png:.jpg
 #do not include files
-ZIPEXCL = \*.DS_Store \*.git \*.gitignore \*project
+ZIPEXCL = \*.DS_Store \*.git \*.git* \*project
 
-BASE_FILES = mod_doyandexmetrika.php\
-	mod_doyandexmetrika.xml\
+BASE_FILES = mod_doyandexmetrika.xml\
 	README\
 	LICENSE.TXT\
 	index.html\
-	helper.php\
 	script.php\
+	site/\
 	media/\
-	tmpl/\
 	language/
 
 DIST = ${DIST_DIR}/${TYPE}${NAME}-v${VER}.zip
