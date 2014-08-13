@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extensionset name="do Yandex Metrika" description="do Yandex Metrika module updates">
-    <extension name="do Yandex Metrika" element="mod_doyandexmetrika" type="module" version="2.5.3" detailsurl="http://dostrog.ru/update/mod_doyandexmetrika-update.xml"/>
+    <extension name="do Yandex Metrika" element="mod_doyandexmetrika" type="module" version="2.5.5" detailsurl="http://dostrog.ru/update/mod_doyandexmetrika-update.xml"/>
+    <extension name="do Yandex Metrika" element="mod_doyandexmetrika" type="module" version="3.0.0" detailsurl="http://dostrog.ru/update/mod_doyandexmetrika-update.xml"/>
 </extensionset>
