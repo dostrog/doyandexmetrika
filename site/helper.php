@@ -2,7 +2,7 @@
 /**
  * @package	   Joomla.Site
  * @subpackage mod_doyandexmetrika
- * @copyright  Copyright (C) 2011-2012 Open Source Matters. All rights reserved.
+ * @copyright  Copyright (C) 2011-2014 Open Source Matters. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -15,7 +15,7 @@ class ModDoyandexmetrikaHelper
 		* @param    array
 		* @return   string
 		*/
-	 public function getCode($params)
+	 public static function getCode( $params )
 	 {
 			$inject = "";
 			$do_counter_id = $params->get('do_counter_id');
@@ -37,6 +37,7 @@ class ModDoyandexmetrikaHelper
 			$do_webvisor = $params->get('do_webvisor');
 			$do_trackhash = $params->get('do_trackhash');
 			$do_userparams = $params->get('do_userparams');
+			$do_forxml = $params->get('do_forxml');
 
 			if ($do_informer==1) {
 
@@ -51,20 +52,15 @@ class ModDoyandexmetrikaHelper
 				 $do_informertype = $params->get('do_informertype');
 
 				 $inject  = "<!-- Yandex.Metrika informer -->\n";
-
-
-
-
-				 $inject .= "<a href=\"http://metrika.yandex.ru/stat/?id=".$do_counter_id;
-$inject .= '&amp;from=informer"
-target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/'.$do_counter_id;
+				 $inject .= "<a href=\"https://metrika.yandex.ru/stat/?id=$do_counter_id&amp;from=informer\"\n";
+				 $inject .= "target=\"_blank\" rel=\"nofollow\"><img src=\"//bs.yandex.ru/informer/$do_counter_id";
 
 				 if ($do_gradient==0) {
 						$do_informer_color1 = $do_informer_color2;
 				 }
 
-				 $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."_".$do_informer_color2."_".$do_textcolor."_".$do_informerinfo."\"";
-				 $inject .= "\nstyle=\"width:";
+				 $inject .= "/".$do_informerstyle."_".$do_arrowcolor."_".$do_informer_color1."FF_".$do_informer_color2."FF_".$do_textcolor."_".$do_informerinfo."\"\n";
+				 $inject .= "style=\"width:";
 				 switch ($do_informerstyle) {
 						case 3: // 88x31
 							 $inject .= "88px; height:31";
@@ -99,7 +95,7 @@ target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/'.$do_counter_i
 						$inject .= "onclick=\"try{Ya.Metrika.informer({i:this,id:$do_counter_id,type:0,lang:'ru'});return false}catch(e){}\"";
 				 }
 
-				 $inject .= " /></a>\n<!-- /Yandex.Metrika informer -->\n\n";
+				 $inject .= "/></a>\n<!-- /Yandex.Metrika informer -->\n\n";
 			}
 
 			$inject .= "<!-- Yandex.Metrika counter -->\n";
@@ -136,13 +132,9 @@ target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/'.$do_counter_i
 
 			$inject .= "yaCounter$do_counter_id = new Ya.Metrika({id:$do_counter_id";
 
-			if ($do_webvisor == 1) { // v1.1.1 webvisor
-				 $inject .= ",\nwebvisor:true";
-			}
-
-			// if (($do_clickmap == 1) && ($do_tracklinks == 1) && ($do_trackbounce == 1)) {
-			// 	 $inject .= ",\nenableAll: true";
-			// } else {
+			if (($do_clickmap == 1) && ($do_tracklinks == 1) && ($do_trackbounce == 1)) {
+				 $inject .= ",\nenableAll: true";
+			} else {
 				 if ($do_clickmap == 1) {
 						$inject .= ",\nclickmap:true";
 				 }
@@ -152,7 +144,7 @@ target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/'.$do_counter_i
 				 if ($do_trackbounce == 1) {
 						$inject .= ",\naccurateTrackBounce:true";
 				 }
-			// }
+			}
 
 			if ($do_trackhash == 1) {
 				 $inject .= ",\ntrackHash:true";
@@ -166,30 +158,31 @@ target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/'.$do_counter_i
 
 				 $do_noindexpages = trim($params->get('do_noindexpages'));
 
-				 if (!empty($do_noindexpages) && (preg_match($do_noindexpages, $path_site))) {
-						$inject .= ",\nut:\"noindex\"";
+				 if (($do_noindexpages != "") && (preg_match($do_noindexpages, $path_site))) {
+						$inject .= ",\nut: 'noindex'";
 						$noscriptind = "?ut=noindex";
 				 }
-			} else {
-						$inject .= ",\nut:\"noindex\"";
-						$noscriptind = "?ut=noindex";
 			}
 
-			if (!empty($do_visitsparams) || !empty($userparams)) {
+			if ($do_webvisor == 1) { // v1.1.1 webvisor
+				 $inject .= ",\nwebvisor:true";
+			}
+
+			if (!empty($do_visitsparams)  || !empty($userparams)) {
 				 $inject .= ",params:window.yaParams||{ }";
 			}
 
-			$inject .= "});\n} catch(e) { }\n";
+			$inject .= "});\n}\ncatch(e) { }\n";
 
 			// Async
 			if ($do_counter_code == 1) {
-				 $inject .= "});\n\n";
+				 $inject .= "});";
 				 $inject .= "var n = d.getElementsByTagName(\"script\")[0],\n";
 				 $inject .= "s = d.createElement(\"script\"),\n";
 				 $inject .= "f = function () { n.parentNode.insertBefore(s, n); };\n";
 				 $inject .= "s.type = \"text/javascript\";\n";
 				 $inject .= "s.async = true;\n";
-				 $inject .= "s.src = (d.location.protocol == \"https:\" ? \"https:\" : \"http:\") + \"//mc.yandex.ru/metrika/watch.js\";\n\n";
+				 $inject .= "s.src = (d.location.protocol == \"https:\" ? \"https:\" : \"http:\") + \"//mc.yandex.ru/metrika/watch.js\";\n";
 				 $inject .= "if (w.opera == \"[object Opera]\") {\n";
 				 $inject .= "  d.addEventListener(\"DOMContentLoaded\", f, false);\n";
 				 $inject .= "} else { f(); }\n";
@@ -197,9 +190,14 @@ target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/'.$do_counter_i
 			};
 
 			$inject .= "</script>\n";
-			$inject .= "<noscript><div><img src=\"//mc.yandex.ru/watch/$do_counter_id$noscriptind\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n";
+
+			if ($do_forxml == 0) {
+				$inject .= "<noscript><div><img src=\"//mc.yandex.ru/watch/$do_counter_id$noscriptind\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n";
+			}
+
 			$inject .= "<!-- /Yandex.Metrika counter -->\n";
 
 			return $inject;
 	 } //end getCode
 }
+?>
