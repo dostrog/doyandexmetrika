@@ -1,0 +1,3 @@
+[submodule "media/jscolor"]
+	path = media/jscolor
+	url = https://github.com/EastDesire/jscolor
