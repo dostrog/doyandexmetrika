@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
 	type="module"
-	version="3.0"
+	version="3.1"
 	client="site"
 	method="upgrade">
 	<name>do Yandex Metrika</name>
@@ -32,7 +32,7 @@
 		<language tag="ru-RU">ru-RU.mod_doyandexmetrika.sys.ini</language>
 	</languages>
 	<updateservers>
-		<server type="collection" priority="1" name="dostrog's Joomla CMS extensions Update Site">http://dostrog.ru/update/list.xml</server>
+		<server type="extension" priority="1" name="dostrog's Joomla CMS extensions Update Site">http://dostrog.ru/update/list.xml</server>
 	</updateservers>
 	<config>
 		<fields name="params">
