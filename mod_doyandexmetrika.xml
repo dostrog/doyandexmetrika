@@ -7,11 +7,11 @@
 	<name>do Yandex Metrika</name>
 	<author>Sergey Donin</author>
 	<creationDate>August 2014</creationDate>
-	<copyright>Copyright (C) 2011 — 2014 Sergey Donin. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2011 — 2016 Sergey Donin. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>sergey.donin@gmail.com</authorEmail>
 	<authorUrl>http://dostrog.ru</authorUrl>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<description>MOD_DOYANDEXMETRIKA_DESC</description>
 	<scriptfile>script.php</scriptfile>
 	<files folder="site">
@@ -150,7 +150,7 @@
 					<option
 						value="2"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x31.png" alt="80x31" /><br />]]></option>
 					<option
-						value="1"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x15.png" alt="80x15" /><script type="text/javascript" src="/media/mod_doyandexmetrika/jscolor/jscolor.js"></script><br />]]></option>
+						value="1"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x15.png" alt="80x15" /><script type="text/javascript" src="/media/mod_doyandexmetrika/jscolor/jscolor.min.js"></script><br />]]></option>
 				</field>
 				<field
 					name="do_informerinfo"
@@ -169,7 +169,7 @@
 					name="do_informer_color1"
 					type="text"
 					default="205173"
-					class="color"
+					class="jscolor"
 					size="20"
 					label="MOD_DOYANDEXMETRIKA_INFORMER_COLOR1"
 					description="MOD_DOYANDEXMETRIKA_INFORMER_COLOR1_DESC" />
@@ -177,7 +177,7 @@
 					name="do_informer_color2"
 					type="text"
 					default="003153"
-					class="color"
+					class="jscolor"
 					size="20"
 					label="MOD_DOYANDEXMETRIKA_INFORMER_COLOR2"
 					description="MOD_DOYANDEXMETRIKA_INFORMER_COLOR2_DESC" />
