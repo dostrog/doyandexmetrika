@@ -27,6 +27,9 @@
   "devDependencies": {
     "fs": "0.0.2",
     "gulp": "^3.9.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-jade": "^1.1.0",
+    "gulp-path": "^2.0.2",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.0.2",
     "merge-stream": "^1.0.0",
