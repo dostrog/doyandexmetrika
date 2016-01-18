@@ -15,6 +15,8 @@ path        = require('path'),
 parseString = require('xml2js').parseString;
 imagemin    = require('gulp-imagemin'),
 pngquant    = require('imagemin-pngquant'), // $ npm i -D imagemin-pngquant
+git         = require('gulp-git'),
+cache       = require('gulp-cache'),
 ver         = {};
 
 
@@ -28,17 +30,21 @@ parseString(fs.readFileSync('app/mod_doyandexmetrika.xml', 'ascii'), function(er
 
 gulp.task('imagemin', function() {
   gulp.src( 'app/media/images/**/*.+(png|jpg|jpeg|gif|svg)' )
-    .pipe(imagemin({
+    // Caching images that ran through imagemin
+    .pipe(cache(imagemin({
       progressive: true,
       interlaced: true,
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
-    }))
+    })))
   .pipe(gulp.dest('app/media/images/'));
 });
 
+gulp.task('updateSubmodules', function(){
+  git.updateSubmodule({ args: '--init --force' });
+});
 
-gulp.task('default', ['imagemin'], function() {
+gulp.task('default', ['updateSubmodules','imagemin'], function() {
 // Start up log
   gutil.log(gutil.colors.white.bgGreen('Preparing release for version ' + ver));
   gulp.src( config.packageFiles, { base: 'app' } )
