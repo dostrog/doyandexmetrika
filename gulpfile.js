@@ -11,16 +11,12 @@ config = require('./gulp-config.json')
 
 // File systems
 fs          = require('fs'),
-path        = require('path'),
 parseString = require('xml2js').parseString;
 imagemin    = require('gulp-imagemin'),
 pngquant    = require('imagemin-pngquant'), // $ npm i -D imagemin-pngquant
 git         = require('gulp-git'),
 cache       = require('gulp-cache'),
 ver         = {};
-
-
-//console.log('assets:' + paths.app.files() );
 
 parseString(fs.readFileSync('app/mod_doyandexmetrika.xml', 'ascii'), function(err, result) {
 
