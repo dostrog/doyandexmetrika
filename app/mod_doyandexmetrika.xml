@@ -12,12 +12,7 @@
 	<authorEmail>sergey.donin@gmail.com</authorEmail>
 	<authorUrl>http://dostrog.ru</authorUrl>
 	<version>3.1.0</version>
-	<description>
-		MOD_DOYANDEXMETRIKA_DESC
-		<![CDATA[
-				<script type="text/javascript" src="/media/mod_doyandexmetrika/jscolor/jscolor.min.js"></script>
-		]]>
-	</description>
+	<description>MOD_DOYANDEXMETRIKA_DESC</description>
 	<scriptfile>script.php</scriptfile>
 	<files folder="site">
 		<filename module="mod_doyandexmetrika">mod_doyandexmetrika.php</filename>
@@ -155,7 +150,7 @@
 					<option
 						value="2"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x31.png" alt="80x31" /><br />]]></option>
 					<option
-						value="1"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x15.png" alt="80x15" /><br />]]></option>
+						value="1"><![CDATA[ <img src="/media/mod_doyandexmetrika/images/80x15.png" alt="80x15" /><br /><script type="text/javascript" src="/media/mod_doyandexmetrika/jscolor/jscolor.min.js"></script>]]></option>
 				</field>
 				<field
 					name="do_informerinfo"
