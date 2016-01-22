@@ -28,6 +28,7 @@ gulp.task('imagemin', function() {
   gulp.src( 'app/media/images/**/*.+(png|jpg|jpeg|gif|svg)' )
     // Caching images that ran through imagemin
     .pipe(cache(imagemin({
+      optimizationLevel: 3,
       progressive: true,
       interlaced: true,
       svgoPlugins: [{removeViewBox: false}],
