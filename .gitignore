@@ -1,7 +1,7 @@
 *.zip
 *.psd
+*.pxm
 *.diff
-.DS_Store
 .komodotools
 *~
 *.patch
@@ -9,3 +9,12 @@ dist
 build
 *.komodoproject
 *.sublime-*
+# Gulp Build script
+gulp-config.json
+npm-debug.log
+node_modules/
+# OSX
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
