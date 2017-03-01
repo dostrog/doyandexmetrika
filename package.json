@@ -25,15 +25,18 @@
   },
   "homepage": "https://github.com/dostrog/doyandexmetrika#readme",
   "devDependencies": {
-    "fs": "0.0.2",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-cache": "^0.4.1",
     "gulp-git": "^1.6.1",
     "gulp-imagemin": "^2.4.0",
+    "gulp-size": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.0.2",
     "imagemin-pngquant": "^4.2.0",
     "merge-stream": "^1.0.0",
     "xml2js": "^0.4.16"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
   }
 }

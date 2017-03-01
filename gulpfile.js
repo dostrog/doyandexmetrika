@@ -3,6 +3,8 @@ var gulp = require('gulp');
 // ZIP compress files
 zip = require('gulp-zip'),
 
+size = require('gulp-size'),
+
 // Utility functions for gulp plugins
 gutil = require('gulp-util')
 
@@ -34,6 +36,7 @@ gulp.task('imagemin', function() {
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
     })))
+  .pipe(size({title: 'images'}))
   .pipe(gulp.dest('app/media/images/'));
 });
 
@@ -46,6 +49,7 @@ gulp.task('default', ['updateSubmodules','imagemin'], function() {
   gutil.log(gutil.colors.white.bgGreen('Preparing release for version ' + ver));
   gulp.src( config.packageFiles, { base: 'app' } )
     .pipe(zip('mod_' + config.name + '-v' + ver + '.zip'))
+    .pipe(size())
     .pipe(gulp.dest(config.releaseDir));
   gutil.log(gutil.colors.white.bgGreen('Component packages are ready at ' + config.releaseDir));
 });
